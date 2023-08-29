@@ -1,0 +1,54 @@
+input[type = submit] {
+    height: 50px;
+    text-align: center;
+    margin: 0 360px 0 360px;
+    font-size: x-large !important;
+    padding-left: 0;
+    border: none;
+}
+
+#avisos p {
+    font-size: medium;
+    color: #EA744E;
+    font-weight: bolder;
+    text-align: center;
+    margin: 0 0 -7px 0;
+}
+
+#form_1 {
+    width: 60%;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 5%;
+}
+
+#form_1 > div {
+    margin: 5px 0 5px 0;
+}
+
+#form_1 label {
+    flex: 32%;
+    text-align: right;
+    font-size: large;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding-right: 10px;
+}
+
+#form_1 input {
+    flex: 68%;
+    padding-left: 8px;
+    font-size: medium;
+    height: 30px;
+}
+
+#form_1 select {
+    height: 32px;
+    font-size: medium;
+    flex: 69%;
+    border-radius: 2px;
+    background-color: white;
+    border: grey 1px solid;
+    margin: 0;
+}

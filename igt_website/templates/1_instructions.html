@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>IGT</title>
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/1_instructions.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='images/tab_icon.png') }}">
+</head>
+
+<body>
+
+<!-- Header !-->
+<header>
+<div class="container_row" id="header">
+    <div class="diamond green"></div>
+    <div class="diamond red"></div>
+    <h1>Iowa Gambling Task</h1>
+</div>
+</header>
+
+<!-- Instructions !-->
+<div id="instructions_text">
+In this experiment, you will be asked repeatedly to pick a card from any of the four decks that will be shown on the screen. You can select a card by clicking on the deck of your choice.
+<br><br>
+You will earn a certain amount of money with each card you pick, but you may also lose some money. It's essential to know that the decks are independent. Before starting the game, the computer will shuffle the cards for each deck and display them. The order of the cards remains the same throughout the game and follows no specific pattern; they are arranged randomly.
+<br><br>
+Keep in mind that some decks offer more profits than others.
+<br><br>
+The goal of the game is to win as much money as possible during 100 rounds. After each choice, the screen will show you the accumulated money, the number of remaining rounds, and the number of cards left in each deck.
+<br><br>
+You will start with 1000 euros.
+</div>
+
+<!-- Next button !-->
+<div onclick=window.location.assign("/game") class="container_row submit_button">
+  <p class="button_style">Next</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>IGT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/2_game.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='images/tab_icon.png') }}">
+</head>
+
+
+<body>
+<!-- Header !-->
+<div class="container_row" id="header">
+    <div class="diamond green"></div>
+    <div class="diamond red"></div>
+    <h1>Iowa Gambling Task</h1>
+    <button id="help_icon" onclick="document.getElementById('help_page').style.display = 'block'">?</button>
+</div>
+
+
+<!-- Cards !-->
+<div class="container_row" id="cards">
+<div onclick=TakeCardA()>
+    <div id="LeftA">100 left</div>
+    <button class="deck">A</button>
+</div>
+<div onclick=TakeCardB()>
+    <div id="LeftB">100 left</div>
+    <button class="deck">B</button>
+</div>
+<div onclick=TakeCardC()>
+    <div id="LeftC">100 left</div>
+    <button class="deck">C</button>
+</div>
+<div onclick=TakeCardD()>
+    <div id="LeftD">100 left</div>
+    <button class="deck">D</button>
+</div>
+</div>
+
+<!-- Results !-->
+<div class="container_row" id="results">
+    <div id="record" class="container_column"><p><b>Record:</b> 2045</p></div>
+    <div id="CardValue" class="container_column">
+        <div id="deck"></div>
+        <div id="value" class="container_column">Pick a deck!</div>
+        <div id="card_foot"></div>
+    </div>
+    <div id="info" class="container_column">
+        <div><b>Draws left:</b> <span id="DrawsLeft">100</span></div>
+        <div><b>Score: </b><span id="Score">0</span></div>
+    </div>
+</div>
+
+<!-- Pop Up !-->
+<div id="help_page">
+    <div id="help_card" class="container_column">
+        <div class="container_row" id="help_card_head">
+            <div id="close_help_page" onclick="document.getElementById('help_page').style.display = 'none'">&#10005</div>
+        </div>
+        <div id="help_card_text">
+            In this experiment, you will be asked repeatedly to pick a card from any of the four decks that will be shown on the screen. You can select a card by clicking on the deck of your choice.
+            <br><br>
+            You will earn a certain amount of money with each card you pick, but you may also lose some money. It's essential to know that the decks are independent. Before starting the game, the computer will shuffle the cards for each deck and display them. The order of the cards remains the same throughout the game and follows no specific pattern; they are arranged randomly.
+            <br><br>
+            Keep in mind that some decks offer more profits than others.
+            <br><br>
+            The goal of the game is to win as much money as possible during 100 rounds. After each choice, the screen will show you the accumulated money, the number of remaining rounds, and the number of cards left in each deck.
+            <br><br>
+            You have started with 1000 euros.
+        </div>
+    </div>
+</div>
+
+</body>
+<script crossorigin="anonymous"
+        integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" src="https://cdn.socket.io/4.4.1/socket.io.min.js">
+</script>
+<script src="{{ url_for('static', filename='js/2_game.js') }}"></script>
+</html>

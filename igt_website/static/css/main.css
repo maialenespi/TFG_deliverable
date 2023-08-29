@@ -1,0 +1,55 @@
+body {
+    background-color: #EDEDED;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.submit_button {
+    justify-content: center;
+    padding-top: 15px;
+}
+
+.button_style {
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: xx-large;
+    padding: 15px 40px 15px 40px;
+    color: white;
+    background-color: #6A98AB;
+    font-weight: bolder;
+    margin: 0 10px 0 10px;
+}
+
+.button_style:hover {
+    cursor: pointer;
+}
+
+.diamond {
+    width: 20px;
+    height: 20px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    margin: 30px 10px 10px;
+    box-shadow: lightgray 3px -3px 3px;
+}
+
+.green {
+    background-color: #91C796;
+}
+
+.red {
+    background-color: #FA5252;
+}
+
+.container_column {
+    display: flex;
+    flex-direction: column;
+}
+
+.container_row {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
