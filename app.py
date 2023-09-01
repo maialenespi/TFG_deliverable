@@ -1,9 +1,12 @@
 """ App module """
 import os
+import pandas as pd
+import numpy as np
 from threading import Lock
 
 from flask import Flask, render_template
 from flask_socketio import SocketIO
+from pandas.util import hash_pandas_object
 
 from computational_modeling.computational_modeling import Computational_Modeling
 from data_visualization.data_visualization import Data_Visualization
@@ -26,6 +29,7 @@ global player_info
 global decisions_record
 global connection_weights
 global patient_id
+global model_evaluation
 
 
 # player_info = df -> csv
@@ -54,39 +58,42 @@ def game():
 @socket_io.on('form')
 def form(form_data):
     """ Save form data upon reception from web """
+    print("Received")
     global player_info
     player_info = igt.save_player_info(form_data)
-    # patient_id = ...
+    global patient_id
+    patient_id = int(hash_pandas_object(player_info) % 100000000)
 
 
 @socket_io.on('draw_card')
-def draw_card(message):
+def draw_card(selected_deck, timestamp):
     """ Draw card from deck upon reception of command from web """
     lock.acquire()  # Race conditions
-    igt.draw_card(message)
+    igt.draw_card(selected_deck, timestamp)
     socket_io.emit('card', igt.last_card)
     lock.release()
     if igt.game_over:
-        # socket_io.emit('game_over', patient_id)
-        global decisions_record
+        global patient_id, decisions_record
+        socket_io.emit('game_over', patient_id)
         decisions_record = igt.data_records
         computational_modeling()
 
 
 def computational_modeling():
-    x, t = model.data_cleaning(decisions_record)
-    model.train(x, t, 500, 100)
-    global connection_weights
-    connection_weights = model.w_xo, model.w_xd, model.w_do
+    x, t, t_time = model.data_cleaning(decisions_record)
+    global connection_weights, model_evaluation
+    connection_weights, model_evaluation = model.train(x[1:], t[1:], t_time[1:], epochs=100)
     data_visualization()
 
 
 def data_visualization():
-    dv.create_folder(patient_id)  # -> create dv.folder
-    dv.df_to_csv(player_info)  # -> in dv.folder
-    dv.df_to_csv(decisions_record)
-    dv.df_to_csv(connection_weights)
-    dv.create_report()
+    global patient_id, player_info, decisions_record, connection_weights
+    dv.create_folder(patient_id)
+    dv.df_to_csv(player_info, "player_info.csv")
+    dv.df_to_csv(decisions_record, "decisions_record.csv")
+    dv.df_to_csv(connection_weights, "connection_weights.csv")
+    dv.df_to_csv(model_evaluation, "model_evaluation.csv")
+    dv.create_report(patient_id)
 
 
 @socket_io.on('retrieve_values')

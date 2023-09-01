@@ -9,34 +9,31 @@
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    <link rel="icon" href="{{ url_for('static', filename='images/tab_icon.png') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/tab_icon_2.png') }}">
 </head>
 
 <body>
 
 <!-- Header !-->
-<header>
 <div class="container_row" id="header">
     <div class="diamond green"></div>
     <div class="diamond red"></div>
     <h1>Iowa Gambling Task</h1>
 </div>
-</header>
 
 <!-- Form !-->
-<main>
-<form class="container_column" id="form_1" onsubmit="setCookie()">
+<form class="container_column" id="form_1">
     <div class="container_row">
         <label for="pathology">* Pathology</label>
-        <input name="pathology" id="pathology" type="text">
+        <input name="pathology" type="text">
     </div>
     <div class="container_row">
         <label for="age">* Age</label>
-        <input name="age" id="age" type="text">
+        <input name="age" type="text">
     </div>
     <div class="container_row">
         <label for="sex">* Sex</label>
-        <select name="sex" id="sex">
+        <select name="sex">
             <option selected value=""></option>
             <option value="Female">Female</option>
             <option value="Male">Male</option>
@@ -44,11 +41,11 @@
     </div>
     <div class="container_row">
         <label for="start_date">Pathology start date</label>
-        <input name="start_date" id="start_date" type="date">
+        <input name="start_date" type="date">
     </div>
     <div class="container_row">
         <label for="start_side">* Most affected side</label>
-        <select name="start_side" id="start_side">
+        <select name="start_side">
             <option selected value=""></option>
             <option value="Left">Left</option>
             <option value="Right">Right</option>
@@ -57,23 +54,20 @@
 
     <div class="container_row">
         <label for="motor_scale_1">Motor Scale 1</label>
-        <input name="motor_scale_1" id="motor_scale_1" type="text">
+        <input name="motor_scale_1" type="text">
     </div>
 
     <div class="container_row">
         <label for="motor_scale_2">Motor Scale 2</label>
-        <input name="motor_scale_2" id="motor_scale_2" type="text">
+        <input name="motor_scale_2" type="text">
     </div>
 
 
     <div id="avisos"></div>
-    <div class="container_row submit_button">
-        <button type="submit" style="border: none" class="button_style">
-          Send
-        </button>
+    <div class="container_row submit_button" onclick=setCookie()>
+        <a class="button_style">Send</a>
     </div>
 </form>
-</main>
 
 </body>
 <script crossorigin="anonymous"

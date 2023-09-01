@@ -1,0 +1,108 @@
+\documentclass{article}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{geometry}
+\geometry{left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm,
+}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage[official]{eurosym}
+\usepackage{url}
+\usepackage{grffile}
+
+\begin{document}
+
+    \noindent \renewcommand{\arraystretch}{1.8}
+    \begin{tabularx}{\textwidth}{|*{4}{X|}}
+        \hline
+        \multicolumn{2}{|l|}{\bfseries \Large Patient ID: {{patient_id}}} & \textbf{Start Side} & {{start_side}} \\ \hline
+        \textbf{Pathology} & {{pathology}} & \textbf{Start Date}     & {{start_date}} \\ \hline
+        \textbf{Sex}       & {{sex}}       & \textbf{Motor Scale I}  & None           \\ \hline
+        \textbf{Age}       & {{age}}       & \textbf{Motor Scale II} & None           \\ \hline
+    \end{tabularx}
+
+    \vspace{0.8cm}
+    \noindent \hrule
+
+    \section*{IGT Game}
+
+
+    \subsection*{Main Stats}
+    \begin{multicols}{3}
+        \renewcommand{\arraystretch}{1.5}
+
+        \begin{tabular}{|l|l|}
+            \hline
+            {\bfseries Most selected deck} & {{most_selected_deck}}  \\ \hline
+            \textbf{Least selected deck}   & {{least_selected_deck}} \\ \hline
+            \textbf{Earned money}          & {{money}}               \\ \hline
+            \textbf{Time (mean)}           & {{time_mean}}           \\ \hline
+            \textbf{Time (range)}          & {{time_range}}          \\ \hline
+            \textbf{Time (std)}            & {{time_std}}            \\ \hline
+        \end{tabular}
+
+        \setlength{\columnsep}{0pt}
+        \begin{tikzpicture}
+            \node at (0, 0) {\includegraphics[width=5cm, height=2cm]{"{{plot_1_path}}"}};
+            \node at (-0.5, -2) {\includegraphics[width=5cm, height=2cm]{"{{plot_2_path}}"}};
+        \end{tikzpicture}
+
+        \setlength{\columnsep}{0pt}
+        \begin{tikzpicture}
+            \node at (0, 0) {\includegraphics[width=5cm, height=4.3cm]{"{{plot_3_path}}"}};
+        \end{tikzpicture}
+    \end{multicols}
+
+    \noindent \hrule
+
+    \section*{Computational Model}
+    \begin{multicols}{2}[\columnsep=7cm]
+        \columnbreak
+        \noindent\makebox[\columnwidth]{
+            \begin{minipage}{0.95\columnwidth}
+                \subsection*{Parameters}
+                \begin{tikzpicture}
+                    \node at (0, 0) {\includegraphics[width=11cm, height=6cm]{"{{plot_4_path}}"}};
+                \end{tikzpicture}
+            \end{minipage}
+        }
+
+        \renewcommand{\arraystretch}{1.5}
+        \subsection*{Training stats}
+        \begin{tabular}{|l|l|}
+            \hline
+            \textbf{Epochs}           & {{epochs}}     \\ \hline
+            \textbf{Population size}  & {{pop_size}}   \\ \hline
+            \textbf{Loss function}    & 0.90a + 0.10b  \\ \hline
+            \textbf{Accuracy}         & {{accuracy}}   \\ \hline
+            \textbf{Time correlation} & {{time_corr}}  \\ \hline
+            \textbf{Time of training} & {{train_time}} \\ \hline
+        \end{tabular}
+    \end{multicols}
+
+
+    \subsection*{Parameters stats}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{small}
+        \begin{tabular}{|m{5.3cm}|m{3.15cm}|m{5.3cm}|m{3.15cm}|}
+            \hline
+            \textbf{Most relevant concept}                              & {{most_relevant_concept}}  & \textbf{Diff between deliberative and direct weights} & {{diff_tstat}} \\
+            \hline
+            \textbf{Least relevant concept}                             & {{least_relevant_concept}} & \textbf{Statistical significancy of diff}             & {{diff_pvalue}} \\
+            \hline
+            \textbf{Mean of weights through deliverative}               & {{mean_deliberative}}      & \textbf{Mean time taken through deliberative} & None \\
+            \hline
+            \textbf{Standard Deviation of weights through deliverative} & {{std_deliberative}} & \textbf{Standard Deviation through deliberative} & None \\
+            \hline
+            \textbf{Mean of direct weights}                             & {{mean_direct}}            & \textbf{Mean time through direct}                     & None \\
+            \hline
+            \textbf{Standard Deviation of direct weights}               & {{std_direct}}             & \textbf{Standard Deviation through direct} & None \\
+            \hline
+        \end{tabular}
+    \end{small}
+
+    \thispagestyle{empty}
+
+\end{document}

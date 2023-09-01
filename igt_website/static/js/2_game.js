@@ -22,31 +22,32 @@ socket.addEventListener('game_state', (game_state) => {
 
 function TakeCardA() {
     if (GameOver === false) {
-        socket.emit('draw_card', 'A');
+        socket.emit('draw_card', 'A', Date.now());
     }
 }
 
 function TakeCardB() {
     if (GameOver === false) {
-        socket.emit('draw_card', 'B');
+        socket.emit('draw_card', 'B', Date.now());
     }
 }
 
 function TakeCardC() {
     if (GameOver === false) {
-        socket.emit('draw_card', 'C');
+        socket.emit('draw_card', 'C', Date.now());
     }
 }
 
 function TakeCardD() {
     if (GameOver === false) {
-        socket.emit('draw_card', 'D');
+        socket.emit('draw_card', 'D', Date.now());
     }
 }
 
-socket.addEventListener('game_over', () => {
+socket.addEventListener('game_over', (patient_id) => {
     GameOver = true;
-    document.getElementById("cards").innerHTML = "<button class=deck id=game_over style=\'font-size: 300%;\'>Game Over - Thank you for playing!</button>";
+    document.getElementById("cards").innerHTML = "<button class=deck id=game_over style='font-size: 300%;'>Game Over - Thank you for playing!\n" +
+        "  <br><br><span style='font-size: 50%;'>Patient ID: " + patient_id + "</span></button>";
 })
 
 

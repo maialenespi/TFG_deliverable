@@ -40,11 +40,13 @@ class IGT:
         self.game_over = False
         self.data_records = None
         self.card_sequence = []
+        self.time_sequence = []
 
-    def draw_card(self, selected_deck):
+    def draw_card(self, selected_deck, timestamp):
         """ Draw card from selected deck """
         if self.remaining_decisions > 0 and not self.game_over:
             self.last_card = self.decks[selected_deck].draw_card_from_deck()
+            self.time_sequence.append(timestamp)
             self.update_game_state(selected_deck)
         else:
             raise Exception
@@ -174,5 +176,6 @@ class IGT:
         """ Save game data when game over """
         self.game_over = True
         self.data_records['Selected deck'] = self.card_sequence[1:] + [None]
+        self.data_records['Time'] = [None] + [self.time_sequence[i + 1] - self.time_sequence[i] for i in
+                                              range(len(self.time_sequence) - 1)]
         self.data_records.index = range(1, len(self.card_sequence) + 1)
-
