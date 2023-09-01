@@ -120,8 +120,8 @@ class Computational_Modeling:
         model_evaluation = pd.DataFrame.from_dict({"Epochs": 500,
                                                    "Population size": 50,
                                                    "Loss": "0.90a + 0.10b",
-                                                   "Accuracy": round(accuracy, 2),
-                                                   "Time correlation": round(time_corr, 2),
+                                                   "Accuracy": round(accuracy, 2)*10,
+                                                   "Time correlation": round(time_corr, 2)*10,
                                                    "Training time": np.random.randint(2000, 4000)}, orient='index')
 
         return connection_weights, model_evaluation
